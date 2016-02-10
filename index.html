@@ -1,0 +1,90 @@
+<html ng-app="BrainStorm">
+    <head>
+        <link rel="stylesheet" href="app/css/main.css" />
+
+        <link rel="stylesheet" href="//node_modules/boostrap/dist/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="//node_modules/boostrap/dist/css/bootstrap-theme.min.css">
+    </head>
+    <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavigationController">
+        <div class="container">
+            
+            <div ng-show="!loggedIn" > 
+            <ul class="nav nav-pills pull-left">
+                <li class=" active topfixheight">
+                    <a ui-sref="main">BrainStorm</a> 
+                </li>
+            </ul>
+                <form class="form-inline paddingtop text-right" >
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                        <input type="email" name="email" class="form-control"  id="exampleInputEmail3" placeholder="Email" ng-model="login.email">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputPassword3">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword3"  placeholder="Password"  ng-model="login.password">
+                    </div>
+                    <button type="button" class="btn btn-primary" ng-click="logUserIn()">Login</button> 
+                    <a ui-sref="signUp">Create An Account</a>
+                </form>
+            </div>
+            <div ng-show="loggedIn" class=" " > 
+                <ul class="nav nav-pills pull-left ">
+                    <li class=" active" role="presentation">
+                        <a ui-sref="main">BrainStorm</a> 
+                    </li>
+                </ul>
+                <ul class="nav nav-pills pull-right ">
+                 <li class="storm-section">
+                    <image ng-src="{{user.image}}" class="img-responsive"> 
+                </image>
+                </li>
+
+                 <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
+                      {{user.username}} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li>
+                        <a ui-sref="editProfile"><span class="glyphicon glyphicon-wrench"></span> Edit Profile</a>   
+                    </li>
+                    <li >
+                        <a ui-sref="follow"><span class="glyphicon glyphicon-heart"></span>  Follow Users</a>
+                    </li>
+                    <li  >
+                        <a href="" ng-click="logOut();"><span class="glyphicon glyphicon-off"></span> Logout</a> 
+                    </li>
+                    </ul>
+                 </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <body>
+        <div class="container" ui-view></div>
+    </body>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <script src="app/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="app/signup/signup-controller.js"></script>
+    <script src="app/navigation/navigation-controller.js"></script>
+    <script src="app/profile/edit-profile-controller.js"></script>
+    <script src="app/main/main-controller.js"></script>
+    <script src="app/follow/follow-controller.js"></script>
+
+
+    <!-- Libraries -->
+    <script src="node_modules/ng-file-upload/dist/ng-file-upload.js"></script>
+    <script src="node_modules/ng-file-upload/dist/ng-file-upload-all.js"></script>
+    <script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.js"></script>
+
+    <!-- jQuery-->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Bootstrap Js -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</html>

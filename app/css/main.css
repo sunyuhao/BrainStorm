@@ -1,0 +1,14 @@
+/* Base Elements */
+
+body {
+    padding-top: 70px;
+}
+
+.storm-section img {
+    width: 50px;
+    height: 50px;
+}
+
+.paddingtop {
+padding-top: 10px;
+}

@@ -1,0 +1,37 @@
+<div class="col-sm-12">
+    <div class="row">
+        <div class="col-md-12">
+             <div ng-show="loggedIn" > 
+                <div  class="row well well-sm" style="margin-bottom:10px;">
+                    <div class="col-md-12" >
+                        <div>
+                            <textarea ng-model="newStorm"  class="form-control" placeholder="Any new storm?"></textarea>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" style="margin-top:5px;" ng-click="sendStorm()">Post storm</button>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+
+                <div  class="row">
+                    <div class="col-md-12" style="margin-bottom:10px;">
+                        <button class="btn btn-default" style="width:100%;" ng-if="incomingStorms.length > 0" ng-click="setNewStorms()" type="button">
+                        New storms &nbsp <span class="badge">{{difference}}</span> 
+                        </button>
+                    </div>
+                </div>
+
+                <div  class="row well well-sm" style="margin-bottom:1px;" ng-repeat="storm in storms">
+                    <div class="col-md-1 storm-section " >
+                     <image ng-src="{{storm.userImage}}" class="img-responsive">                
+                    </div>
+                    <div class="col-md-11">
+                        <strong>{{storm.user}}</strong> &nbsp-&nbsp {{storm.date | date: 'dd/MM/yyyy hh:mm'}}<br>
+                         <p>{{storm.content}}</p>
+                    </div>
+                </div>
+        </div>
+     
+    </div>
+</div>
